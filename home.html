@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coza Website</title>
+    <link rel="stylesheet" href="/css/stylesheet.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+ <script src="script.js" defer></script>
+</head>
+<body>
+<nav>
+  <div class="logo">COZA</div>
+  <ul class="nav-links">
+    <li><a id="nav-home" onclick="navigate('home')">Home</a></li>
+    <li><a id="nav-shop" onclick="navigate('shop')">Shop</a></li>
+    <li><a class="disabled">Features</a></li>
+    <li><a class="disabled">Blog</a></li>
+    <li><a class="disabled">About</a></li>
+    <li><a class="disabled">Contact</a></li>
+    <div class="nav-icons">
+      <a href="#"><i class="fa-solid fa-heart"></i></a>
+      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </ul>
+</nav>
+
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="https://cozastore.store/images/banner-01.jpg" style="width:100%">
+
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="https://cozastore.store/images/banner-02.jpg" style="width:100%">
+    
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="https://cozastore.store/images/banner-03.jpg" style="width:100%">
+    
+  </div>
+
+ 
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+<section class="categories-section">
+  <div class="category-cards" id="category-cards">
+
+  </div>
+</section>
+
+<!-- Product Overview -->
+<section class="products-section">
+  <h2 class="section-title">PRODUCT OVERVIEW</h2>
+  <div class="filter-bar">
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="tab-btn active" onclick="filterProducts('all')">All Products</button>
+    </div>
+    <div class="search-bar">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="search-input" placeholder="Search products..." oninput="searchProducts()">
+    </div>
+  </div>
+  <div class="products-grid" id="products-grid">
+    <p class="loading">Loading products...</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    
+    <div class="footer-logo-section">
+      <div class="footer-logo">COZA</div>
+      <p class="footer-description">Your one-stop destination for modern fashion and lifestyle. Quality products, delivered with style.</p>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, Muscat, Oman</p>
+      <p><i class="fa-solid fa-phone"></i> +968 1234 5678</p>
+      <p><i class="fa-solid fa-envelope"></i> hello@coza.com</p>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 COZA. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

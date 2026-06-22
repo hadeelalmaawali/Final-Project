@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="window.location.href='home.html'" style="cursor:pointer">COZA</div>
+  <ul class="nav-links">
+    <li><a onclick="window.location.href='home.html'">Home</a></li>
+    <li><a class="disabled">Shop</a></li>
+    <li><a class="disabled">Features</a></li>
+    <li><a class="disabled">Blog</a></li>
+    <li><a class="disabled">About</a></li>
+    <li><a class="disabled">Contact</a></li>
+    <div class="nav-icons">
+      <a href="#"><i class="fa-solid fa-heart"></i></a>
+      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </ul>
+</nav>
+
+<div class="product-details-container" id="product-details">
+  <p class="loading">Loading product...</p>
+</div>
+  <script src="script.js" defer></script>
+</body>
+</html>
