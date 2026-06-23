@@ -1,17 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coza Website</title>
+  <title>Shop – Coza</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <script src="script.js" defer></script>
   <style>
-    .mySlides { display: none; }
-    .fade { animation: fade 1.5s; }
-    @keyframes fade { from { opacity: .4; } to { opacity: 1; } }
- 
     @keyframes spin { to { transform: rotate(360deg); } }
     .spinner {
       width: 50px; height: 50px;
@@ -20,16 +17,10 @@
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
- 
     .product-card:hover .wish-btn { opacity: 1; }
     .product-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
- 
     .tab-btn.active, .tab-btn:hover { color: #000; border-bottom: 2px solid #000; }
- 
     .product-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
- 
-    .category-card:hover img { transform: scale(1.05); }
- 
     a.disabled { pointer-events: none; color: #aaa !important; cursor: default; }
   </style>
 </head>
@@ -40,7 +31,8 @@
   <div class="font-bold text-xl mr-10 whitespace-nowrap cursor-pointer" onclick="window.location.href='index.html'">COZA</div>
   <ul class="list-none m-0 p-0 flex items-center flex-1 overflow-x-auto">
     <li><a onclick="window.location.href='index.html'" class="block text-black text-center px-4 py-[14px] no-underline cursor-pointer hover:bg-[#111] hover:text-white transition-colors whitespace-nowrap">Home</a></li>
-    <li><a onclick="window.location.href='shop.html'" class="block text-black text-center px-4 py-[14px] no-underline cursor-pointer hover:bg-[#111] hover:text-white transition-colors whitespace-nowrap">Shop</a></li>
+    <li><a onclick="window.location.href='shop.html'" class="block bg-[#111] text-white text-center px-4 py-[14px] no-underline cursor-pointer whitespace-nowrap">Shop</a></li>
+ 
     <div class="ml-auto flex items-center gap-2 px-2">
       <a href="#" class="text-black no-underline px-2 py-[14px] hover:text-[#555]"><i class="fa-solid fa-heart"></i></a>
       <a href="#" class="text-black no-underline px-2 py-[14px] hover:text-[#555]"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -48,38 +40,20 @@
   </ul>
 </nav>
  
-<!-- SLIDESHOW -->
-<div class="relative max-w-[1300px] mx-auto">
-  <div class="mySlides fade relative">
-    <div class="absolute top-2 left-3 text-white text-xs px-3 py-1 z-10">1 / 3</div>
-    <img src="https://cozastore.store/images/banner-01.jpg" class="w-full block">
-  </div>
-  <div class="mySlides fade relative">
-    <div class="absolute top-2 left-3 text-white text-xs px-3 py-1 z-10">2 / 3</div>
-    <img src="https://cozastore.store/images/banner-02.jpg" class="w-full block">
-  </div>
-  <div class="mySlides fade relative">
-    <div class="absolute top-2 left-3 text-white text-xs px-3 py-1 z-10">3 / 3</div>
-    <img src="https://cozastore.store/images/banner-03.jpg" class="w-full block">
-  </div>
-  <a onclick="plusSlides(-1)" class="absolute top-1/2 left-2 -translate-y-1/2 cursor-pointer text-white font-bold text-2xl px-4 py-3 bg-black/40 hover:bg-black/80 rounded transition-all z-10 select-none">&#10094;</a>
-  <a onclick="plusSlides(1)"  class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer text-white font-bold text-2xl px-4 py-3 bg-black/40 hover:bg-black/80 rounded transition-all z-10 select-none">&#10095;</a>
+
+<div class="bg-[#f5f5f5] px-4 md:px-[60px] py-10 border-b border-[#e0e0e0]">
+  <h1 class="text-3xl md:text-4xl font-black mb-2">Shop</h1>
+  <p class="text-[#777] text-sm">Discover our full collection of fashion & lifestyle products.</p>
 </div>
- 
 
 <div id="error-banner" class="hidden bg-red-100 border border-red-300 text-red-700 text-sm text-center px-4 py-3 mx-4 mt-4 rounded"></div>
  
 
 <section class="px-4 md:px-[60px] py-10">
-  <div id="category-cards" class="grid gap-5" style="grid-template-columns: 1.5fr 1fr 1fr;"></div>
-</section>
- 
-
-<section class="px-4 md:px-[60px] pb-[60px] pt-2">
-  <h2 class="text-2xl md:text-[28px] font-black mb-5">PRODUCT OVERVIEW</h2>
+  <!-- Filter + Search -->
   <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b border-[#ddd] mb-8 gap-3 pb-1">
     <div id="filter-tabs" class="flex gap-2 flex-wrap">
-      <button class="tab-btn bg-transparent border-none border-b-2 border-transparent px-[6px] py-[10px] text-sm text-[#555] cursor-pointer transition-all" onclick="filterProducts('all', event)">All Products</button>
+      <button class="tab-btn bg-transparent border-none border-b-2 border-transparent px-[6px] py-[10px] text-sm text-[#555] cursor-pointer transition-all active" onclick="filterProducts('all', event)">All Products</button>
     </div>
     <div class="flex items-center gap-2 border border-[#ddd] rounded px-3 py-2">
       <i class="fa-solid fa-magnifying-glass text-[#999]"></i>
@@ -87,9 +61,12 @@
         class="border-none outline-none text-sm text-[#333] bg-transparent w-full">
     </div>
   </div>
+ 
+
   <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
     <p class="text-center text-[#999] py-10 col-span-4">Loading products...</p>
   </div>
+ 
 
   <div id="pagination" class="flex justify-center gap-2 mt-10 flex-wrap"></div>
 </section>
@@ -103,9 +80,9 @@
     </div>
     <div>
       <h3 class="text-base font-bold mb-3">Contact Us</h3>
-      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-location-dot text-[#333] w-4"></i> 163 Fashion Street, Muscat, Oman</p>
+      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-location-dot text-[#333] w-4"></i> 123 Fashion Street, Muscat, Oman</p>
       <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-phone text-[#333] w-4"></i> +968 1234 5678</p>
-      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-envelope text-[#333] w-4"></i> fashion@coza.com</p>
+      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-envelope text-[#333] w-4"></i> hello@coza.com</p>
     </div>
   </div>
   <div class="text-center py-3 border-t border-[#ccc] text-[13px] text-[#777]">
@@ -115,3 +92,4 @@
  
 </body>
 </html>
+ 

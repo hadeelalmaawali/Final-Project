@@ -3,32 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details</title>
-  <link rel="stylesheet" href="/stylesheet.css">
+  <title>Product Details – Coza</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  
+  <script src="script.js" defer></script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 50px; height: 50px;
+      border: 5px solid #eaeaea;
+      border-top: 5px solid #111;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    a.disabled { pointer-events: none; color: #aaa !important; cursor: default; }
+    .thumb-img { transition: border-color 0.2s; }
+    .thumb-img:hover { border-color: #333 !important; }
+  </style>
 </head>
-<body>
+<body class="m-0 p-0">
+ 
+<!-- NAV Bar -->
+<nav class="flex items-center bg-[#eaeaea] px-5 sticky top-0 z-50 shadow-sm">
+  <div class="font-bold text-xl mr-10 whitespace-nowrap cursor-pointer" onclick="window.location.href='index.html'">COZA</div>
+  <ul class="list-none m-0 p-0 flex items-center flex-1 overflow-x-auto">
+    <li><a onclick="window.location.href='index.html'" class="block text-black text-center px-4 py-[14px] no-underline cursor-pointer hover:bg-[#111] hover:text-white transition-colors whitespace-nowrap">Home</a></li>
+    <li><a onclick="window.location.href='shop.html'" class="block text-black text-center px-4 py-[14px] no-underline cursor-pointer hover:bg-[#111] hover:text-white transition-colors whitespace-nowrap">Shop</a></li>
 
-<nav>
-  <div class="logo" onclick="window.location.href='home.html'" style="cursor:pointer">COZA</div>
-  <ul class="nav-links">
-    <li><a onclick="window.location.href='home.html'">Home</a></li>
-    <li><a class="disabled">Shop</a></li>
-    <li><a class="disabled">Features</a></li>
-    <li><a class="disabled">Blog</a></li>
-    <li><a class="disabled">About</a></li>
-    <li><a class="disabled">Contact</a></li>
-    <div class="nav-icons">
-      <a href="#"><i class="fa-solid fa-heart"></i></a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+
+    <div class="ml-auto flex items-center gap-2 px-2">
+      <a href="#" class="text-black no-underline px-2 py-[14px] hover:text-[#555]"><i class="fa-solid fa-heart"></i></a>
+      <a href="#" class="text-black no-underline px-2 py-[14px] hover:text-[#555]"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
   </ul>
 </nav>
+ 
 
-<div class="product-details-container" id="product-details">
-  <p class="loading">Loading product...</p>
+<div class="px-4 md:px-[60px] py-4 text-sm text-[#999]">
+  <span class="cursor-pointer hover:text-black transition-colors" onclick="window.location.href='index.html'">Home</span>
+  <span class="mx-2">/</span>
+  <span class="cursor-pointer hover:text-black transition-colors" onclick="window.location.href='shop.html'">Shop</span>
+  <span class="mx-2">/</span>
+  <span class="text-black" id="breadcrumb-title">Product</span>
 </div>
-  <script src="script.js" defer></script>
+ 
+
+<div id="error-banner" class="hidden bg-red-100 border border-red-300 text-red-700 text-sm text-center px-4 py-3 mx-4 rounded"></div>
+ 
+
+<div id="product-details" class="px-4 md:px-[60px] py-6">
+  <div class="flex justify-center items-center py-20">
+    <div class="spinner"></div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer class="bg-[#eaeaea] mt-[60px]">
+  <div class="flex flex-col md:flex-row justify-between items-start px-4 md:px-[60px] py-10 gap-10">
+    <div>
+      <div class="text-2xl font-bold mb-3">COZA</div>
+      <p class="text-[#555] text-sm max-w-[300px] leading-relaxed">Your one-stop destination for modern fashion and lifestyle. Quality products, delivered with style.</p>
+    </div>
+    <div>
+      <h3 class="text-base font-bold mb-3">Contact Us</h3>
+      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-location-dot text-[#333] w-4"></i> 123 Fashion Street, Muscat, Oman</p>
+      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-phone text-[#333] w-4"></i> +968 1234 5678</p>
+      <p class="text-sm text-[#555] mb-2 flex items-center gap-2"><i class="fa-solid fa-envelope text-[#333] w-4"></i> hello@coza.com</p>
+    </div>
+  </div>
+  <div class="text-center py-3 border-t border-[#ccc] text-[13px] text-[#777]">
+    <p>&copy; 2026 COZA. All rights reserved.</p>
+  </div>
+</footer>
+ 
 </body>
 </html>
