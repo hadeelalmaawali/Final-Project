@@ -3,11 +3,11 @@ if (document.querySelector('.mySlides')) {
   showSlides(slideIndex);
 }
  
-function plusSlides(n) { showSlides(slideIndex += n); }
-function currentSlide(n) { showSlides(slideIndex = n); }
+function plusSlides(n: number):void { showSlides(slideIndex += n); }
+function currentSlide(n: number):void { showSlides(slideIndex = n); }
  
-function showSlides(n) {
-  const slides = document.getElementsByClassName('mySlides');
+function showSlides(n: number): void{
+  const slides = document.getElementsByClassName('mySlides') as HTMLCollectionOf<HTMLElement>;
   if (slides.length === 0) return;
   if (n > slides.length) slideIndex = 1;
   if (n < 1) slideIndex = slides.length;
@@ -26,7 +26,7 @@ let currentPage = 1;
 const PRODUCTS_PER_PAGE = 8;
  
 
-function showError(message) {
+function showError(message: string): void{
   const banner = document.getElementById('error-banner');
   if (!banner) return;
   banner.textContent = message;
@@ -101,7 +101,7 @@ function renderCategoryCards() {
 }
  
 // Go to shop.html filtered by category
-function filterAndGoShop(categoryId) {
+function filterAndGoShop(categoryId: string): void {
   localStorage.setItem('shopCategory', categoryId);
   window.location.href = 'shop.html';
 }
@@ -127,9 +127,9 @@ function renderFilterTabs() {
 
 //  FILTER PRODUCTS
 
-function filterProducts(categoryId, event) {
+function filterProducts(categoryId: string, event: MouseEvent): void {
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  if (event && event.target) event.target.classList.add('active');
+  if (event && event.target) (event.target as HTMLElement).classList.add('active');
  
   const filtered = categoryId === 'all'
     ? allProducts
@@ -142,7 +142,7 @@ function filterProducts(categoryId, event) {
 
 //  RENDER PRODUCTS  
 
-function renderProducts(products) {
+function renderProducts(products:any[]):void {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
  
@@ -185,7 +185,7 @@ function renderProducts(products) {
 
 //  PAGINATION divide to small and mangepable pages 
 
-function renderPagination(totalCount, products) {
+function renderPagination(totalCount: number, products:any[]): void {
   const container = document.getElementById('pagination');
   if (!container) return;
  
@@ -207,10 +207,10 @@ function renderPagination(totalCount, products) {
   container.dataset.products = JSON.stringify(products);
 }
  
-function goToPage(page, event) {
+function goToPage(page: number, event: MouseEvent): void{
   currentPage = page;
   // Re-render with current search/filter results
-  const query = document.getElementById('search-input')?.value?.toLowerCase() || '';
+  const query = (document.getElementById('search-input') as HTMLInputElement)?.value?.toLowerCase() || '';
   const filtered = query
     ? allProducts.filter(p =>
         p.title.toLowerCase().includes(query) ||
@@ -224,7 +224,7 @@ function goToPage(page, event) {
 
 //  GO TO PRODUCT
 
-function goToProduct(id) {
+function goToProduct(id: string):void {
   const overlay = document.createElement('div');
   overlay.className = 'fixed inset-0 bg-white/80 flex items-center justify-center z-[9999]';
   overlay.innerHTML = '<div class="spinner"></div>';
@@ -241,8 +241,8 @@ function goToProduct(id) {
 
 //  SEARCH
 
-function searchProducts() {
-  const query = document.getElementById('search-input').value.toLowerCase();
+function searchProducts():void {
+  const query = (document.getElementById('search-input') as HTMLInputElement).value.toLowerCase();
   const filtered = allProducts.filter(p =>
     p.title.toLowerCase().includes(query) ||
     p.category.name.toLowerCase().includes(query) ||
@@ -354,7 +354,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const savedCategory = localStorage.getItem('shopCategory');
       if (savedCategory) {
         localStorage.removeItem('shopCategory');
-        const btn = document.querySelector(`.tab-btn[onclick*="${savedCategory}"]`);
+        const btn = document.querySelector(`.tab-btn[onclick*="${savedCategory}"]`) as HTMLElement;
         if (btn) btn.click();
       }
     });
